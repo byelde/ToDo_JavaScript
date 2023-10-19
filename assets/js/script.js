@@ -1,8 +1,8 @@
 let tasksList = []
 
+let tasksInput = document.querySelector('input.taskName')
 const addTask = () => {
 
-    let tasksInput = document.querySelector('input.taskName')
     let task = tasksInput.value
     if (task === '') {
         window.alert('Insert a valid task')
@@ -20,6 +20,12 @@ const addTask = () => {
         reloadData()
     }
 }
+
+tasksInput.addEventListener('keypress', function (v) {
+    if (v.key == 'Enter') {
+        addTask()
+    }
+})
 
 const showTasks = () => {
     const outputModel = (task, index) => `<li class=${task.done && 'done'}>
